@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Digital - GOLDEN HOUR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4a373;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-light: #ced4da; /* Gris claro para lectura perfecta */
+        }
+
+        body { 
+            background-color: var(--dark-bg); 
+            color: #ffffff; 
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* Botón Flotante para Volver */
+        .btn-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            padding: 8px 25px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+        .btn-back:hover { 
+            background: var(--gold); 
+            color: black; 
+            transform: scale(1.05);
+        }
+
+        .menu-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/principal.png');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        /* Estilo de las Pestañas (Tabs) */
+        .nav-pills .nav-link {
+            color: white;
+            border-radius: 50px;
+            margin: 0 5px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s;
+            padding: 10px 25px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .nav-pills .nav-link.active {
+            background-color: var(--gold);
+            color: black;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(212, 163, 115, 0.4);
+        }
+
+        /* Ítems del Menú */
+        .menu-item {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 25px;
+            height: 100%;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 10px rgba(212, 163, 115, 0.2);
+        }
+
+        .item-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .menu-item:hover .item-img {
+            transform: scale(1.05);
+        }
+
+        /* --- MEJORA DE CONTRASTE --- */
+        .menu-item h5 {
+            color: #ffffff; /* Título blanco puro */
+            font-weight: 600;
+        }
+
+        .menu-item .text-muted {
+            color: var(--text-light) !important; /* Gris claro para que resalte */
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .price {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.3rem;
+            background: rgba(212, 163, 115, 0.1);
+            padding: 2px 10px;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #0a0a0a;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="btn-back">← Inicio</a>
+
+    <header class="menu-header">
+        <h1 class="display-3 fw-bold">NUESTRO MENÚ</h1>
+        <p class="lead text-uppercase" style="letter-spacing: 4px; color: var(--gold);">Golden Hour Experience</p>
+    </header>
+
+    <div class="container py-5">
+        <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active" id="pills-cafe-tab" data-bs-toggle="pill" data-bs-target="#pills-cafe">Café Caliente</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="pills-frios-tab" data-bs-toggle="pill" data-bs-target="#pills-frios">Bebidas Frías</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="pills-postres-tab" data-bs-toggle="pill" data-bs-target="#pills-postres">Repostería</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+            
+            <div class="tab-pane fade show active" id="pills-cafe">
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="menu-item">
+                            <img src="img/americano.jpg" class="item-img" alt="Americano">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="mb-0">Americano Vanilla Foam</h5>
+                                    <span class="price">$55</span>
+                                </div>
+                                <p class="text-muted small mt-3">Doble shot de espresso premium con nuestra icónica espuma suave de vainilla artesanal.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="menu-item">
+                            <img src="img/latte.jpg" class="item-img" alt="Latte">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="mb-0">Golden Latte</h5>
+                                    <span class="price">$48</span>
+                                </div>
+                                <p class="text-muted small mt-3">Cremosa textura con notas de caramelo tostado y un arte latte diseñado a mano.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-frios">
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="menu-item">
+                            <img src="img/matcha.jpg" class="item-img" alt="Matcha">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="mb-0">Iced Matcha Latte</h5>
+                                    <span class="price">$65</span>
+                                </div>
+                                <p class="text-muted small mt-3">Matcha ceremonial de alta pureza batido suavemente sobre leche fría y hielo cristalino.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-postres">
+                <div class="text-center py-5">
+                    <div class="spinner-grow text-warning mb-3" role="status"></div>
+                    <p class="text-muted">Estamos horneando nuevas sorpresas para ti...</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="text-center py-5 border-top border-secondary mt-5">
+        <div class="container">
+            <p class="mb-1 fw-bold" style="color: var(--gold);">GOLDEN HOUR CULIACÁN</p>
+            <p class="small text-muted mb-0">Calle Universitarios Ote. 292, Burócrata.</p>
+            <p class="text-muted" style="font-size: 0.7rem; margin-top: 20px;">© 2026 Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
