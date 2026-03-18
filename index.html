@@ -10,18 +10,16 @@
     <style>
         /* --- 1. EFECTO PARALLAX OPTIMIZADO PARA MÓVILES --- */
         .parallax {
-            /* Por defecto en móviles usamos scroll porque 'fixed' rompe la carga de la imagen */
             background-attachment: scroll; 
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
             color: white;
-            /* Fuerza al navegador a renderizar la imagen antes de hacer scroll */
             backface-visibility: hidden;
         }
 
-        /* Solo activamos el efecto fijo en computadoras para evitar lag y errores en cel */
+        /* Solo activamos el efecto fijo en computadoras para evitar errores en cel */
         @media (min-width: 992px) {
             .parallax {
                 background-attachment: fixed;
@@ -70,7 +68,6 @@
             display: flex;
             align-items: center;
             text-align: center;
-            /* Asegura que la imagen se vea bien en pantallas verticales de cel */
             background-size: cover;
             background-position: center center;
         }
@@ -88,7 +85,7 @@
             padding: 120px 0;
         }
 
-        /* --- 4. GALERÍA DE VIDEOS (OPTIMIZADA) --- */
+        /* --- 4. GALERÍA DE VIDEOS (COMPORTAMIENTO GIF) --- */
         .gallery-item {
             overflow: hidden;
             border-radius: 15px;
@@ -140,7 +137,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link px-3" href="menu.html">Menú</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#galeria">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#galeria">Eventos</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#ubicacion">Ubicación</a></li>
                 </ul>
             </div>
@@ -200,7 +197,7 @@
 
     <section id="galeria" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5 display-4">Nuestro Espacio</h2>
+            <h2 class="text-center mb-5 display-4">Eventos</h2>
             <div class="row g-4">
                 <div class="col-md-4 col-sm-6">
                     <div class="gallery-item shadow">
@@ -246,14 +243,17 @@
                         <p class="mb-2"><strong>Horario:</strong></p>
                         <p class="text-muted mb-1">Lunes a Sábado: 8:00 AM - 7:00 PM</p>
                         <p class="text-muted small"><em>* Domingos: Cerrado</em></p>
-                        <a href="https://maps.google.com/?q=Calle+Universitarios+Ote+292+Culiacan" target="_blank" class="btn btn-dark w-100 mt-3 rounded-pill">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Golden+Hour+Coffee+House+Culiacan" target="_blank" class="btn btn-dark w-100 mt-3 rounded-pill">
                             Abrir en Google Maps
                         </a>
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="map-container shadow-lg rounded-4 overflow-hidden" style="height: 450px;">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.5036137683935!2d-107.3917632!3d24.8124231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85e08436034f8281%3A0x633d76e336e4f32a!2sUniversitarios%20Ote.%20292!5e0!3m2!1ses!2smx!4v1710710000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.58334861836!2d-107.39126432426922!3d24.811566377959082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86bbdb03f5ade919%3A0x719fb21eeb2ea6b6!2sGolden%20Hour%20Coffee%20House!5e0!3m2!1ses-419!2smx!4v1710000000000!5m2!1ses-419!2smx" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -273,6 +273,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
+        // Optimización: Pausa videos fuera de pantalla para ahorrar batería en cel
         const videos = document.querySelectorAll('video');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
